@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>fighters go pewpew</title>
+    <title>sweeties go tweet tweet</title>
     <meta charset="utf-8"/>
     <style type="text/css">
         body {
@@ -73,7 +73,7 @@
             self.flyingObjects.push(new flyingObjectModel({
                 currentTarget: { x: 100, y: 100 },
                 currentLocation: { x: 200, y: 200 },
-                imageSource: 'images/plane1-fb.png',
+                imageSource: 'images/sweetie1.png',
                 name: "object 1",
                 selectable: true
             }));
@@ -82,7 +82,7 @@
                 currentLocation: { x: 250, y: 200 },
                 speed: 25,
                 turnIteration: 8,
-                imageSource: 'images/plane2-f.png',
+                imageSource: 'images/sweetie2.png',
                 name: "object 2",
                 selectable: true
             }));
@@ -92,7 +92,7 @@
                 currentLocation: { x: 50, y: 350 },
                 speed: 23,
                 turnIteration: 8,
-                imageSource: 'images/plane3-f.png',
+                imageSource: 'images/pest.png',
                 name: "object 3"
             }));
 
@@ -193,7 +193,7 @@
             var self = this;
             self.targetOffset = 2;
             self.targetSize = 4;
-            self.radius = 10;
+            self.radius = 40;
             self.currentAngle = 0;
             self.currentSpeed = settings.speed || 20;
             self.turnIteration = settings.turnIteration || 5;
