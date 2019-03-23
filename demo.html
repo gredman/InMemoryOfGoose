@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>sweeties go tweet tweet</title>
@@ -35,6 +35,7 @@
 
         $(document).ready(function () {
             drawLoop();
+            scheduleTweet();
 
             document.getElementById('canvas').addEventListener('mousedown', function (e) {
                 var mouseCo = GetMouse(e);
@@ -335,10 +336,23 @@
                 var ctx = canvas.getContext('2d');
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 model.draw(ctx);
-                setTimeout(function(){ drawLoop(); }, 50);
             }
         }
-
+        setInterval(drawLoop, 50);
+        
+        function playTweet() {
+            var number = Math.floor(Math.random()*4 + 1);
+            var sound = new Audio();
+            sound.src = 'sounds/tweet' + number + '.wav';
+            sound.play();
+        }
+        function scheduleTweet() {
+            var timeout = Math.random() * 2500;
+            setTimeout(function () {
+                playTweet();
+                scheduleTweet();
+            }, timeout)
+        }
 
         function GetMouse(e) {
             var element = document.getElementById('canvas'), offsetX = 0, offsetY = 0, mx, my;
