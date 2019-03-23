@@ -75,6 +75,7 @@
             self.flyingObjects.push(new flyingObjectModel({
                 currentTarget: { x: 100, y: 100 },
                 currentLocation: { x: 200, y: 200 },
+                speed: 40,
                 imageSourceSet: 'images/sweetie1@1x.png, images/sweetie1@2x.png 2x',
                 name: "object 1",
                 selectable: true
@@ -82,7 +83,7 @@
             self.flyingObjects.push(new flyingObjectModel({
                 currentTarget: { x: 150, y: 100 },
                 currentLocation: { x: 250, y: 200 },
-                speed: 25,
+                speed: 35,
                 turnIteration: 8,
                 imageSourceSet: 'images/sweetie2@1x.png, images/sweetie2@2x.png 2x',
                 name: "object 2",
@@ -92,7 +93,7 @@
                 currentTarget: { x: 250, y: 250 },
                 targetLock: self.flyingObjects[1],
                 currentLocation: { x: 50, y: 350 },
-                speed: 23,
+                speed: 22,
                 turnIteration: 8,
                 imageSourceSet: 'images/pest@1x.png, images/pest@2x.png 2x',
                 name: "object 3"
