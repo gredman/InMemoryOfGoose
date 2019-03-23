@@ -22,7 +22,7 @@
 <body onload="">
     <div class="everything">
 
-        <canvas id="canvas" width="400" height="400"></canvas>
+        <canvas id="canvas" width="800" height="600"></canvas>
 
     </div>
     <script src="jquery-3.3.1.min.js" type="text/javascript"></script>
@@ -73,7 +73,7 @@
             self.flyingObjects.push(new flyingObjectModel({
                 currentTarget: { x: 100, y: 100 },
                 currentLocation: { x: 200, y: 200 },
-                imageSource: 'images/sweetie1.png',
+                imageSourceSet: 'images/sweetie1@1x.png, images/sweetie1@2x.png 2x',
                 name: "object 1",
                 selectable: true
             }));
@@ -82,7 +82,7 @@
                 currentLocation: { x: 250, y: 200 },
                 speed: 25,
                 turnIteration: 8,
-                imageSource: 'images/sweetie2.png',
+                imageSourceSet: 'images/sweetie2@1x.png, images/sweetie2@2x.png 2x',
                 name: "object 2",
                 selectable: true
             }));
@@ -92,7 +92,7 @@
                 currentLocation: { x: 50, y: 350 },
                 speed: 23,
                 turnIteration: 8,
-                imageSource: 'images/pest.png',
+                imageSourceSet: 'images/pest@1x.png, images/pest@2x.png 2x',
                 name: "object 3"
             }));
 
@@ -202,7 +202,7 @@
             self.targetLock = settings.targetLock || null;
             self.currentLocation = settings.currentLocation; //{ x : settings.currentLocation.x, y : settings.currentLocation.y };
             self.image = new Image();
-            self.image.src = settings.imageSource;
+            self.image.srcset = settings.imageSourceSet;
             self.selected = false;
             self.selectable = settings.selectable || false;
 
@@ -211,11 +211,6 @@
                 if(self.selectable) {
                     self.drawMyTarget(ctx);
                 }
-                ctx.save();
-                ctx.translate(self.currentLocation.x, self.currentLocation.y);
-                ctx.rotate(self.currentAngle * Math.PI / 180);
-                ctx.drawImage(self.image,-1*self.radius,-1*self.radius);
-                ctx.restore();
 
                 if (self.selected) {
                     // draw an indicator that this is the selected object
@@ -227,6 +222,11 @@
                     ctx.restore();
                 }
 
+                ctx.save();
+                ctx.translate(self.currentLocation.x, self.currentLocation.y);
+                ctx.rotate(self.currentAngle * Math.PI / 180);
+                ctx.drawImage(self.image, -1*self.radius, -1*self.radius, self.radius*2, self.radius*2);
+                ctx.restore();
             };
             self.drawMyTarget = function (ctx) {
                 // draw the target for this flying object as a square on the screen
