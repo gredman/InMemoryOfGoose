@@ -191,8 +191,9 @@
 
         var flyingObjectModel = function(settings) {
             var self = this;
-            self.targetOffset = 2;
-            self.targetSize = 4;
+            self.font = '40px sans-serif';
+            self.targetVerticalOffset = -20;
+            self.targetHorizontalOffset = 20;
             self.radius = 40;
             self.currentAngle = 0;
             self.currentSpeed = settings.speed || 20;
@@ -231,11 +232,6 @@
                 // draw the target for this flying object as a square on the screen
                 var theTarget = self.getCurrentTarget();
 
-                ctx.save();
-                ctx.fillStyle = '#d0d0d0';
-                ctx.fillRect(theTarget.x - self.targetOffset, theTarget.y - self.targetOffset, self.targetSize, self.targetSize);
-                ctx.restore();
-
                 // draw a line to the target
                 ctx.save();
                 ctx.beginPath();
@@ -243,6 +239,12 @@
                 ctx.moveTo(self.currentLocation.x, self.currentLocation.y);
                 ctx.lineTo(theTarget.x, theTarget.y);
                 ctx.stroke();
+                ctx.restore();
+                
+                // draw a nice treat
+                ctx.save();
+                ctx.font = self.font;
+                ctx.fillText('🥪', theTarget.x - self.targetHorizontalOffset, theTarget.y - self.targetVerticalOffset);
                 ctx.restore();
             }
             self.move = function() {
