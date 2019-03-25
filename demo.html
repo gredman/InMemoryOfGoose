@@ -228,6 +228,9 @@
                 ctx.save();
                 ctx.translate(self.currentLocation.x, self.currentLocation.y);
                 ctx.rotate(self.currentAngle * Math.PI / 180);
+                if (self.currentAngle < -90 || self.currentAngle > 90) {
+                    ctx.scale(1, -1);
+                }
                 ctx.drawImage(self.image, -1*self.radius, -1*self.radius, self.radius*2, self.radius*2);
                 ctx.restore();
             };
